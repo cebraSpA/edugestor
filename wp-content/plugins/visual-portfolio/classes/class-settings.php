@@ -123,9 +123,16 @@ class Visual_Portfolio_Settings {
                     'default' => 'portfolio',
                 ),
                 array(
+                    'name'    => 'filter_taxonomies',
+                    'label'   => esc_html__( 'Filter Taxonomies', 'visual-portfolio' ),
+                    'desc'    => esc_html__( 'You can show custom taxonomies in the portfolio Filter. Enter some taxonomies by "," separating values. Example: "product_cat,product_tag"', 'visual-portfolio' ),
+                    'type'    => 'text',
+                    'default' => '',
+                ),
+                array(
                     'name'    => 'no_image',
                     'label'   => esc_html__( 'No image', 'visual-portfolio' ),
-                    'desc'    => esc_html__( 'This image used if featured image of post is not specified.', 'visual-portfolio' ),
+                    'desc'    => esc_html__( 'This image used if the featured image of a post is not specified.', 'visual-portfolio' ),
                     'type'    => 'image',
                     'default' => '',
                     'options' => array(
@@ -141,13 +148,41 @@ class Visual_Portfolio_Settings {
                     'type'    => 'checkbox',
                     'default' => 'on',
                 ),
+
                 array(
                     'name'    => 'show_caption',
                     'label'   => esc_html__( 'Show caption', 'visual-portfolio' ),
-                    'desc'    => esc_html__( 'Below images will be showed caption with Title and Description.', 'visual-portfolio' ),
+                    'desc'    => esc_html__( 'Below images will be showed caption.', 'visual-portfolio' ),
                     'type'    => 'checkbox',
                     'default' => 'on',
                 ),
+                array(
+                    'name'    => 'caption_title',
+                    'desc'    => esc_html__( 'Caption Title', 'visual-portfolio' ),
+                    'type'    => 'select',
+                    'default' => 'title',
+                    'options' => array(
+                        'none'        => esc_html__( 'None', 'visual-portfolio' ),
+                        'title'       => esc_html__( 'Image Title', 'visual-portfolio' ),
+                        'caption'     => esc_html__( 'Image Caption', 'visual-portfolio' ),
+                        'alt'         => esc_html__( 'Image Alt', 'visual-portfolio' ),
+                        'description' => esc_html__( 'Image Description', 'visual-portfolio' ),
+                    ),
+                ),
+                array(
+                    'name'    => 'caption_description',
+                    'desc'    => esc_html__( 'Caption Description', 'visual-portfolio' ),
+                    'type'    => 'select',
+                    'default' => 'description',
+                    'options' => array(
+                        'none'        => esc_html__( 'None', 'visual-portfolio' ),
+                        'title'       => esc_html__( 'Image Title', 'visual-portfolio' ),
+                        'caption'     => esc_html__( 'Image Caption', 'visual-portfolio' ),
+                        'alt'         => esc_html__( 'Image Alt', 'visual-portfolio' ),
+                        'description' => esc_html__( 'Image Description', 'visual-portfolio' ),
+                    ),
+                ),
+
                 array(
                     'name'    => 'show_counter',
                     'label'   => esc_html__( 'Show images counter', 'visual-portfolio' ),

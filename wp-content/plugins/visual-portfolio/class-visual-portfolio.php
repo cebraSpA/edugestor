@@ -2,7 +2,7 @@
 /**
  * Plugin Name:  Visual Portfolio
  * Description:  Portfolio post type with visual editor
- * Version:      1.6.5
+ * Version:      1.7.1
  * Author:       nK
  * Author URI:   https://nkdev.info
  * License:      GPLv2 or later
@@ -207,8 +207,8 @@ class Visual_Portfolio {
         }
 
         // Visual Portfolio.
-        wp_register_script( 'visual-portfolio', visual_portfolio()->plugin_url . 'assets/js/script.min.js', $vp_deps, '1.6.5', true );
-        wp_register_style( 'visual-portfolio', visual_portfolio()->plugin_url . 'assets/css/style.min.css', $vp_style_deps, '1.6.5' );
+        wp_register_script( 'visual-portfolio', visual_portfolio()->plugin_url . 'assets/js/script.min.js', $vp_deps, '1.7.1', true );
+        wp_register_style( 'visual-portfolio', visual_portfolio()->plugin_url . 'assets/css/style.min.css', $vp_style_deps, '1.7.1' );
 
         // Visual Portfolio data.
         $data_init = array(
@@ -225,13 +225,13 @@ class Visual_Portfolio {
                 'pswp_share_pin' => esc_attr( 'Pin it', 'visual-portfolio' ),
             ),
             'settingsPopupGallery' => array(
-                'show_arrows' => Visual_Portfolio_Settings::get_option( 'show_arrows', 'vp_popup_gallery', true ),
-                'show_caption' => Visual_Portfolio_Settings::get_option( 'show_caption', 'vp_popup_gallery', true ),
-                'show_counter' => Visual_Portfolio_Settings::get_option( 'show_counter', 'vp_popup_gallery', true ),
-                'show_zoom_button' => Visual_Portfolio_Settings::get_option( 'show_zoom_button', 'vp_popup_gallery', true ),
+                'show_arrows'            => Visual_Portfolio_Settings::get_option( 'show_arrows', 'vp_popup_gallery', true ),
+                'show_caption'           => Visual_Portfolio_Settings::get_option( 'show_caption', 'vp_popup_gallery', true ),
+                'show_counter'           => Visual_Portfolio_Settings::get_option( 'show_counter', 'vp_popup_gallery', true ),
+                'show_zoom_button'       => Visual_Portfolio_Settings::get_option( 'show_zoom_button', 'vp_popup_gallery', true ),
                 'show_fullscreen_button' => Visual_Portfolio_Settings::get_option( 'show_fullscreen_button', 'vp_popup_gallery', true ),
-                'show_share_button' => Visual_Portfolio_Settings::get_option( 'show_share_button', 'vp_popup_gallery', true ),
-                'show_close_button' => Visual_Portfolio_Settings::get_option( 'show_close_button', 'vp_popup_gallery', true ),
+                'show_share_button'      => Visual_Portfolio_Settings::get_option( 'show_share_button', 'vp_popup_gallery', true ),
+                'show_close_button'      => Visual_Portfolio_Settings::get_option( 'show_close_button', 'vp_popup_gallery', true ),
             ),
         );
         wp_localize_script( 'visual-portfolio', 'VPData', $data_init );

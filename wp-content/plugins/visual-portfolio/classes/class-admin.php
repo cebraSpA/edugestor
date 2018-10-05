@@ -53,6 +53,9 @@ class Visual_Portfolio_Admin {
         // highlight admin menu items.
         add_action( 'admin_menu', array( $this, 'admin_menu' ) );
 
+        // show admin menu dropdown with available portfolios on the current page.
+        add_action( 'wp_before_admin_bar_render', array( $this, 'wp_before_admin_bar_render' ) );
+
         // register controls.
         add_action( 'init', array( $this, 'register_controls' ) );
 
@@ -149,8 +152,8 @@ class Visual_Portfolio_Admin {
         wp_enqueue_script( 'tooltip.js', visual_portfolio()->plugin_url . 'assets/vendor/popper.js/tooltip.min.js', array( 'popper.js' ), '1.14.3', true );
         wp_enqueue_style( 'popper.js', visual_portfolio()->plugin_url . 'assets/vendor/popper.js/popper.css', '', '1.14.3' );
 
-        wp_enqueue_script( 'visual-portfolio-admin', visual_portfolio()->plugin_url . 'assets/admin/js/script.min.js', array( 'jquery' ), '1.6.5', true );
-        wp_enqueue_style( 'visual-portfolio-admin', visual_portfolio()->plugin_url . 'assets/admin/css/style.min.css', '', '1.6.5' );
+        wp_enqueue_script( 'visual-portfolio-admin', visual_portfolio()->plugin_url . 'assets/admin/js/script.min.js', array( 'jquery' ), '1.7.1', true );
+        wp_enqueue_style( 'visual-portfolio-admin', visual_portfolio()->plugin_url . 'assets/admin/css/style.min.css', '', '1.7.1' );
         wp_localize_script( 'visual-portfolio-admin', 'VPAdminVariables', $data_init );
     }
 
@@ -605,6 +608,51 @@ class Visual_Portfolio_Admin {
             echo '<code class="vp-onclick-selection">';
             echo '[visual_portfolio id="' . get_the_ID() . '"]';
             echo '</code>';
+        }
+    }
+
+    /**
+     * Add admin dropdown menu with all used Layouts on the current page.
+     */
+    public function wp_before_admin_bar_render() {
+        global $wp_admin_bar;
+
+        if ( ! is_super_admin() || ! is_admin_bar_showing() ) {
+            return;
+        }
+
+        // add all nodes of all Slider.
+        $layouts = Visual_Portfolio_Get::get_all_currently_used_ids();
+        $layouts = array_unique( $layouts );
+
+        if ( ! empty( $layouts ) ) {
+            $wp_admin_bar->add_node( array(
+                'parent' => false,
+                'id'     => 'visual_portfolio',
+                'title'  => esc_html__( 'Visual Portfolio', 'visual-portfolio' ),
+                'href'   => admin_url( 'edit.php?post_type=vp_lists' ),
+            ) );
+
+            // get visual-portfolio post types by IDs.
+            // Don't use WP_Query on the admin side https://core.trac.wordpress.org/ticket/18408 .
+            $vp_query = get_posts(
+                array(
+                    'post_type'      => 'vp_lists',
+                    // phpcs:ignore
+                    'posts_per_page' => -1,
+                    'showposts'      => -1,
+                    'paged'          => -1,
+                    'post__in'       => $layouts,
+                )
+            );
+            foreach ( $vp_query as $post ) {
+                $wp_admin_bar->add_node( array(
+                    'parent' => 'visual_portfolio',
+                    'id'     => 'vp_list_' . esc_html( $post->ID ),
+                    'title'  => esc_html( $post->post_title ),
+                    'href'   => admin_url( 'post.php?post=' . $post->ID ) . '&action=edit',
+                ) );
+            }
         }
     }
 
@@ -1097,7 +1145,34 @@ class Visual_Portfolio_Admin {
                     'show_icons' => false,
                     'align' => true,
                 ),
-                'controls' => array(),
+                'controls' => array(
+                    array(
+                        'type'    => 'select2',
+                        'label'   => esc_html__( 'Show Read more button', 'visual-portfolio' ),
+                        'name'    => 'show_read_more',
+                        'default' => false,
+                        'options' => array(
+                            'false' => esc_html__( 'False', 'visual-portfolio' ),
+                            'true' => esc_html__( 'Always show', 'visual-portfolio' ),
+                            'more_tag' => esc_html__( 'Show when used "More tag" in the post', 'visual-portfolio' ),
+                        ),
+                    ),
+                    array(
+                        'type'    => 'text',
+                        'name'    => 'read_more_label',
+                        'placeholder' => 'Read More',
+                        'default' => 'Read More',
+                        'hint'    => esc_attr__( 'Read more button label', 'visual-portfolio' ),
+                        'hint_place' => 'left',
+                        'condition' => array(
+                            array(
+                                'control' => 'show_read_more',
+                                'operator' => '!=',
+                                'value' => 'false',
+                            ),
+                        ),
+                    ),
+                ),
             ),
 
             // Fly.

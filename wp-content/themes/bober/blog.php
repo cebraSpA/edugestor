@@ -27,7 +27,6 @@
         <div class="row">
             <div class="col-lg-8 col-lg-push-2">
                 <div class="content">
-
                     <div class="heading-title al-center">
                         <h1 class="al-headitg-title"><?php echo esc_html($blog_title); ?></h1>
 
@@ -52,5 +51,230 @@
     <?php endif; ?>
 </div>
 
+    <style type="text/css" media="screen">
+        .blog-imgss{
+            background: url("https://via.placeholder.com/350x200") no-repeat center center; 
+            height: 200px;
+        }
+        .pad-bl{
+            padding: 30px 0;
+        }
+        .pad-cont{
+            padding: 30px 0;
+        }
+        ul#bl-list{
+            list-style: none;
+        }
+    </style>
+
+
+
+    <div style="background-color: red; height: 200px;">
+    <ul>
+    <?php
+
+    global $post;
+    $args = array( 'posts_per_page' => 5, 'offset'=> 1, 'category' => 1 );
+
+    $myposts = get_posts( $args );
+    foreach ( $myposts as $post ) : setup_postdata( $post ); ?>
+        <li>
+            <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+        </li>
+    <?php endforeach; 
+    wp_reset_postdata();?>
+
+    </ul>
+</div>
+    <div class="container pad-cont">
+        <div class="row">
+            <div class="col-lg-8">
+
+                <div class="col-lg-6 pad-bl">
+                    <div class="col-lg-12 blog-imgss" ></div>
+                    <div class="col-lg-12">
+                        <span>Categoria: Deportes</span>
+                        <span>-</span>
+                        <span>03/10/2018</span>                     
+                        <h3 style="font-size: 15px; line-height: 17px;"><?php echo esc_html($blog_title); ?></h3>
+                        <p  style="font-size: 15px; line-height: 17px;">
+                            <?php echo esc_html($blog_description); ?>
+                        </p>
+                    </div>
+                </div>                     
+
+                <div class="col-lg-6 pad-bl">
+                    <div class="col-lg-12 blog-imgss" ></div>
+                    <div class="col-lg-12">
+                        <span>Categoria: Deportes</span>
+                        <span>-</span>
+                        <span>03/10/2018</span>                     
+                        <h3 style="font-size: 15px; line-height: 17px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                        <p  style="font-size: 15px; line-height: 17px;">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.
+                        </p>
+                    </div>
+                </div>                        
+
+                <div class="col-lg-6 pad-bl">
+                    <div class="col-lg-12 blog-imgss" ></div>
+                    <div class="col-lg-12">
+                        <span>Categoria: Deportes</span>
+                        <span>-</span>
+                        <span>03/10/2018</span>                     
+                        <h3 style="font-size: 15px; line-height: 17px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                        <p  style="font-size: 15px; line-height: 17px;">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.
+                        </p>
+                    </div>
+                </div>                     
+
+                <div class="col-lg-6 pad-bl">
+                    <div class="col-lg-12 blog-imgss" ></div>
+                    <div class="col-lg-12">
+                        <span>Categoria: Deportes</span>
+                        <span>-</span>
+                        <span>03/10/2018</span>                     
+                        <h3 style="font-size: 15px; line-height: 17px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                        <p  style="font-size: 15px; line-height: 17px;">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                        quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+                        consequat.
+                        </p>
+                    </div>
+                </div>                        
+
+
+            </div>
+            <div class="col-lg-4" style="padding: 30px 0;">
+                <div class="col-lg-12" style="border: 1px solid #000;">
+                    <h3 style="font-size: 15px; line-height: 17px;">Publicaciones favoritas</h3>
+                    <ul id="bl-list">
+
+                        
+                        <li style="padding: 10px; height: 100px;">
+                                <a href="" title="">
+                                    <div style="border-top: 1px solid #000; padding: 5px 0;">   
+                                        <div class="col-lg-8">
+                                            <span style="font-size: 10px; line-height:  12px;">Categoria: Deportes</span>
+                                            <span style="font-size: 10px; line-height: 12px;">-</span>
+                                            <span style="font-size: 10px; line-height: 12px;">03/10/2018</span>   
+                                            <h3 style="font-size: 13px; line-height: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                                        </div>
+                                        <div class="col-lg-4">                                    
+                                            <img src="https://via.placeholder.com/80x80" alt="">
+                                        </div>
+                                    </div>
+                                </a>
+                        </li>    
+                        
+                        <li style="padding: 10px; height: 100px;">
+                                <a href="" title="">
+                                    <div style="border-top: 1px solid #000; padding: 5px 0;">   
+                                        <div class="col-lg-8">
+                                            <span style="font-size: 10px; line-height:  12px;">Categoria: Deportes</span>
+                                            <span style="font-size: 10px; line-height: 12px;">-</span>
+                                            <span style="font-size: 10px; line-height: 12px;">03/10/2018</span>   
+                                            <h3 style="font-size: 13px; line-height: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                                        </div>
+                                        <div class="col-lg-4">                                    
+                                            <img src="https://via.placeholder.com/80x80" alt="">
+                                        </div>
+                                    </div>
+                                </a>
+                        </li>    
+                        
+                        <li style="padding: 10px; height: 100px;">
+                                <a href="" title="">
+                                    <div style="border-top: 1px solid #000; padding: 5px 0;">   
+                                        <div class="col-lg-8">
+                                            <span style="font-size: 10px; line-height:  12px;">Categoria: Deportes</span>
+                                            <span style="font-size: 10px; line-height: 12px;">-</span>
+                                            <span style="font-size: 10px; line-height: 12px;">03/10/2018</span>   
+                                            <h3 style="font-size: 13px; line-height: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                                        </div>
+                                        <div class="col-lg-4">                                    
+                                            <img src="https://via.placeholder.com/80x80" alt="">
+                                        </div>
+                                    </div>
+                                </a>
+                        </li>    
+                        
+                        <li style="padding: 10px; height: 100px;">
+                                <a href="" title="">
+                                    <div style="border-top: 1px solid #000; padding: 5px 0;">   
+                                        <div class="col-lg-8">
+                                            <span style="font-size: 10px; line-height:  12px;">Categoria: Deportes</span>
+                                            <span style="font-size: 10px; line-height: 12px;">-</span>
+                                            <span style="font-size: 10px; line-height: 12px;">03/10/2018</span>   
+                                            <h3 style="font-size: 13px; line-height: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                                        </div>
+                                        <div class="col-lg-4">                                    
+                                            <img src="https://via.placeholder.com/80x80" alt="">
+                                        </div>
+                                    </div>
+                                </a>
+                        </li>                          
+                        <li style="padding: 10px; height: 100px;">
+                                <a href="" title="">
+                                    <div style="border-top: 1px solid #000; padding: 5px 0;">   
+                                        <div class="col-lg-8">
+                                            <span style="font-size: 10px; line-height:  12px;">Categoria: Deportes</span>
+                                            <span style="font-size: 10px; line-height: 12px;">-</span>
+                                            <span style="font-size: 10px; line-height: 12px;">03/10/2018</span>   
+                                            <h3 style="font-size: 13px; line-height: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                                        </div>
+                                        <div class="col-lg-4">                                    
+                                            <img src="https://via.placeholder.com/80x80" alt="">
+                                        </div>
+                                    </div>
+                                </a>
+                        </li>                          
+                        <li style="padding: 10px; height: 100px;">
+                                <a href="" title="">
+                                    <div style="border-top: 1px solid #000; padding: 5px 0;">   
+                                        <div class="col-lg-8">
+                                            <span style="font-size: 10px; line-height:  12px;">Categoria: Deportes</span>
+                                            <span style="font-size: 10px; line-height: 12px;">-</span>
+                                            <span style="font-size: 10px; line-height: 12px;">03/10/2018</span>   
+                                            <h3 style="font-size: 13px; line-height: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                                        </div>
+                                        <div class="col-lg-4">                                    
+                                            <img src="https://via.placeholder.com/80x80" alt="">
+                                        </div>
+                                    </div>
+                                </a>
+                        </li>                          
+                        <li style="padding: 10px; height: 100px;">
+                                <a href="" title="">
+                                    <div style="border-top: 1px solid #000; padding: 5px 0;">   
+                                        <div class="col-lg-8">
+                                            <span style="font-size: 10px; line-height:  12px;">Categoria: Deportes</span>
+                                            <span style="font-size: 10px; line-height: 12px;">-</span>
+                                            <span style="font-size: 10px; line-height: 12px;">03/10/2018</span>   
+                                            <h3 style="font-size: 13px; line-height: 12px;">Lorem ipsum dolor sit amet, consectetur adipisicing elit</h3>
+                                        </div>
+                                        <div class="col-lg-4">                                    
+                                            <img src="https://via.placeholder.com/80x80" alt="">
+                                        </div>
+                                    </div>
+                                </a>
+                        </li>    
+
+
+                    </ul>
+
+                </div>
+            </div>
+                    
+        </div>
+    </div>
 
 <?php get_footer(); ?>
